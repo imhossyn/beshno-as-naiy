@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/idRLContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".SplashActivity">
 
-    <!--on below line we are adding an image view-->
     <ImageView
         android:id="@+id/idIVLogo"
         android:layout_width="wrap_content"
@@ -18,13 +16,23 @@
         android:layout_margin="25dp"
         android:src="@mipmap/naiy_icon_foreground" />
 
-    <!--on below line we are creating progress bar-->
+
     <ProgressBar
         android:id="@+id/idPBLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/idIVLogo"
         android:layout_centerInParent="true"
-        android:indeterminateTint="@color/black" />
+        android:indeterminateTint="@color/green_tire" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/idPBLoading"
+        android:layout_marginTop="125dp"
+        android:text="@string/app_name" />
+
 
 </RelativeLayout>

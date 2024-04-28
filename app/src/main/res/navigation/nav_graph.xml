@@ -3,11 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@id/chooseClassNumberFragment">
 
+    <fragment
+        android:id="@+id/poemsViewList"
+        android:name="com.fateh.beshno_as_naiy.PoemsViewListFragment"
+        android:label="fragment_poems_view_list"
+        tools:layout="@layout/fragment_poems_view_list" />
     <activity
-        android:id="@+id/mainActivity"
-        android:name="com.fateh.beshno_as_naiy.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+        android:id="@+id/splashActivity"
+        android:name="com.fateh.beshno_as_naiy.SplashActivity"
+        android:label="activity_splash"
+        tools:layout="@layout/activity_splash" />
+    <fragment
+        android:id="@+id/chooseClassNumberFragment"
+        android:name="com.fateh.beshno_as_naiy.ChooseClassNumberFragment"
+        android:label="fragment_choose_class_number"
+        tools:layout="@layout/fragment_choose_class_number" >
+        <action
+            android:id="@+id/action_chooseClassNumberFragment_to_poemsViewList"
+            app:destination="@id/poemsViewList" />
+    </fragment>
 </navigation>
