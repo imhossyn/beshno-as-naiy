@@ -18,7 +18,7 @@
         android:gravity="center_vertical"
         android:layoutDirection="rtl"
         android:maxLines="1"
-        android:text="بشنو از نی چون حکایت میکند."
+        android:text="بشنو از نی چون حکایت میکند. بشنو از نی چون حکایت میکند."
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
