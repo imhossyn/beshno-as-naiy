@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#D5EED9</color>
+    <color name="green_tire">#169641</color>
 </resources>
