@@ -30,5 +30,7 @@ public class PoemsViewList extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        poemsRecycleView = view.findViewById(R.id.poem_recycle_view);
+
     }
 }
