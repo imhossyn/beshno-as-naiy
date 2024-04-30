@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/poemsViewList"
-        android:name="com.fateh.beshno_as_naiy.PoemsViewListFragment"
+        android:name="com.fateh.beshno_as_naiy.PoemsListFragment"
         android:label="fragment_poems_view_list"
-        tools:layout="@layout/fragment_poems_view_list" />
+        tools:layout="@layout/fragment_poems_list" />
     <activity
         android:id="@+id/splashActivity"
         android:name="com.fateh.beshno_as_naiy.SplashActivity"
