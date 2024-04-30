@@ -3,6 +3,5 @@
     <style name="Base.Theme.Beshnoasnaiy" parent="Theme.AppCompat">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-<!--        <item name="font">@font/iransans</item>-->
     </style>
 </resources>
