@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
-    android:padding="10dp"
+    android:layout_marginTop="15dp"
     tools:context=".PoemsViewListFragment">
 
 
