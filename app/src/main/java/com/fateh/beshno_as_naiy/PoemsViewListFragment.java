@@ -11,14 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class PoemsViewListFragment extends Fragment {
 
-    RecyclerView poemsRecycleView;
-    PoemRecycleViewAdapter recycleViewAdapter;
-    ArrayList<String> list_test = new ArrayList<>();
+    ListView poemListView;
+    PoemListViewAdapter poemListViewAdapter;
+    ArrayList<PoemModel>list_test;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,15 +35,32 @@ public class PoemsViewListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        poemsRecycleView = view.findViewById(R.id.poem_recycle_view);
 
-        list_test.add("بشنو از نی چون حکایت میکند.");
-        list_test.add("بشنو از نی چون حکایت میکند.");
-        list_test.add("بشنو از نی چون حکایت میکند. بشنو از نی چون حکایت میکند");
-        list_test.add("بشنو از نی چون حکایت میکند.");
-        recycleViewAdapter = new PoemRecycleViewAdapter(getContext(), list_test);
-        poemsRecycleView.setAdapter(recycleViewAdapter);
-        poemsRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        poemListView = view.findViewById(R.id.list_poems);
+
+        list_test = new ArrayList<PoemModel>();
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
+
+
+        poemListViewAdapter = new PoemListViewAdapter(getContext(), list_test);
+        poemListView.setAdapter(poemListViewAdapter);
 
     }
 }
