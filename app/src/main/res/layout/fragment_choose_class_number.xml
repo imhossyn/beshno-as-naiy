@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
-        android:text="مقطع تحصیلی خود را انتخاب کنید."
+        android:text="@string/choosing_class"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:backgroundTint="@color/green_tire"
-        android:text="انتخاب"
+        android:text="@string/enter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ClassNumbers" />
