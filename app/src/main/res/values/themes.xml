@@ -3,6 +3,7 @@
     <style name="Base.Theme.Beshnoasnaiy" parent="Theme.AppCompat.Light">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="@android"></item>
     </style>
 
     <style name="Theme.Beshnoasnaiy" parent="Base.Theme.Beshnoasnaiy" />
