@@ -17,12 +17,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ChooseClassNumberFragment extends Fragment {
 
-    MyDBHelper myDBHelper;
+    ArrayList<PoemModel> all_data;
     RadioGroup level_select_RG;
     RadioButton class_selected_RB;
     Button insert_btn;
@@ -45,8 +45,6 @@ public class ChooseClassNumberFragment extends Fragment {
         title_txt = view.findViewById(R.id.TitleTxt);
         level_select_RG = view.findViewById(R.id.ClassNumbers);
         insert_btn = view.findViewById(R.id.enter_btn);
-        myDBHelper = new MyDBHelper(getContext());
-        myDBHelper.createDataBase();
 
         insert_btn.setOnClickListener(new View.OnClickListener() {
             int level_selected_id = 0;
@@ -59,18 +57,20 @@ public class ChooseClassNumberFragment extends Fragment {
                 } else {
                     class_selected_RB = view.findViewById(level_selected_id);
                     Toast.makeText(getContext(), class_selected_RB.getText(), Toast.LENGTH_SHORT).show();
-                    List<PoemModel> tmpPoemList = getPoems((String) class_selected_RB.getText());
-//                    Bundle bundle = new Bundle();
-//                    bundle.putParcelableArrayList("poemsList", (ArrayList<PoemModel>) tmpPoemList);
-//                    Navigation.findNavController(v).navigate(R.id.action_chooseClassNumberFragment_to_poemsViewList, bundle);
+                    ArrayList<PoemModel> tmpPoemList = getPoems((String) class_selected_RB.getText());
+                    Log.d("poemsList generated", String.valueOf(tmpPoemList.size()));
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("poemsList", tmpPoemList);
+                    Navigation.findNavController(v).navigate(R.id.action_chooseClassNumberFragment_to_poemsViewList, bundle);
                 }
             }
         });
     }
 
-    private List<PoemModel> getPoems(String level) {
+    private ArrayList<PoemModel> getPoems(String level) {
+        ArrayList<PoemModel> tmpPoemList = new ArrayList<>();
         int tmpLevel = 0;
-        switch (level){
+        switch (level) {
             case "پایه هفتم":
                 tmpLevel = 7;
                 break;
@@ -81,13 +81,18 @@ public class ChooseClassNumberFragment extends Fragment {
                 tmpLevel = 9;
                 break;
         }
-        List<PoemModel> tmpPoemList = new ArrayList<>();
-        List<PoemModel> poemList = myDBHelper.getAllData();
-        for (PoemModel poem : poemList) {
-            if (poem.getLevel() == tmpLevel) {
-                tmpPoemList.add(poem);
+        try {
+            MyDBHelper myDBHelper = new MyDBHelper(getContext());
+            ArrayList<PoemModel> poemList = myDBHelper.getAllData();
+            for (PoemModel poem : poemList) {
+                if (poem.getLevel() == tmpLevel) {
+                    tmpPoemList.add(poem);
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        Log.d("Chossing level poems", String.valueOf(tmpPoemList.size()));
         return tmpPoemList;
     }
 }

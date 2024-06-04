@@ -3,23 +3,18 @@ package com.fateh.beshno_as_naiy;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
-public class PoemModel implements Parcelable {
+import java.io.Serializable;
+
+public class PoemModel implements Serializable {
     private int db_id;
     private int level;
     private String poem_title;
-
     private String poem_txt;
     private String voice_url;
-
-    public PoemModel() {
-    }
-
-    public PoemModel(String title) {
-        this.poem_title = title;
-    }
 
     public PoemModel(int db_id, int class_number, String title, String voice_url, String poem_txt) {
         this.db_id = db_id;
@@ -36,18 +31,6 @@ public class PoemModel implements Parcelable {
         poem_txt = in.readString();
         voice_url = in.readString();
     }
-
-    public static final Creator<PoemModel> CREATOR = new Creator<PoemModel>() {
-        @Override
-        public PoemModel createFromParcel(Parcel in) {
-            return new PoemModel(in);
-        }
-
-        @Override
-        public PoemModel[] newArray(int size) {
-            return new PoemModel[size];
-        }
-    };
 
     public String getPoem_txt() {
         return poem_txt;
@@ -94,17 +77,4 @@ public class PoemModel implements Parcelable {
         return "PoemModel{" + "db_id=" + db_id + ", class_number=" + level + ", poem_title='" + poem_title + '\'' + ", poem_txt='" + poem_txt + '\'' + ", voice_url='" + voice_url + '\'' + '}';
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeInt(db_id);
-        dest.writeInt(level);
-        dest.writeString(poem_title);
-        dest.writeString(poem_txt);
-        dest.writeString(voice_url);
-    }
 }

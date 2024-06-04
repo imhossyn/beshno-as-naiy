@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_poemsViewList_to_playerBarFragment"
             app:destination="@id/playerBarFragment" />
-        <argument
-            android:name="poemsList"
-            app:argType="com.fateh.beshno_as_naiy.PoemModel[]" />
     </fragment>
     <activity
         android:id="@+id/splashActivity"
