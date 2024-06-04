@@ -15,13 +15,19 @@ import java.util.ArrayList;
 
 public class PoemsListFragment extends Fragment {
 
+    private static final String TAG = "poemlist";
     ListView poemListView;
     ListViewAdapter listViewAdapter;
-    ArrayList<PoemModel>list_test;
+    ArrayList<PoemModel> poemsList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle bundle = getArguments();
+        if (bundle != null){
+            poemsList = bundle.getParcelableArrayList("poemsList");
+        }
     }
 
     @Override
@@ -35,29 +41,7 @@ public class PoemsListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         poemListView = view.findViewById(R.id.list_poems);
-
-        list_test = new ArrayList<PoemModel>();
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-        list_test.add(new PoemModel("بشنو از نی چون حکایت می کند."));
-
-
-        listViewAdapter = new ListViewAdapter(getContext(), list_test);
+        listViewAdapter = new ListViewAdapter(getContext(), poemsList);
         poemListView.setAdapter(listViewAdapter);
 
     }

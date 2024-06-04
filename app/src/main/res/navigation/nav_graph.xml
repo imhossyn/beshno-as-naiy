@@ -9,7 +9,14 @@
         android:id="@+id/poemsViewList"
         android:name="com.fateh.beshno_as_naiy.PoemsListFragment"
         android:label="fragment_poems_view_list"
-        tools:layout="@layout/fragment_poems_list" />
+        tools:layout="@layout/fragment_poems_list" >
+        <action
+            android:id="@+id/action_poemsViewList_to_playerBarFragment"
+            app:destination="@id/playerBarFragment" />
+        <argument
+            android:name="poemsList"
+            app:argType="com.fateh.beshno_as_naiy.PoemModel[]" />
+    </fragment>
     <activity
         android:id="@+id/splashActivity"
         android:name="com.fateh.beshno_as_naiy.SplashActivity"
@@ -24,4 +31,9 @@
             android:id="@+id/action_chooseClassNumberFragment_to_poemsViewList"
             app:destination="@id/poemsViewList" />
     </fragment>
+    <dialog
+        android:id="@+id/playerBarFragment"
+        android:name="com.fateh.beshno_as_naiy.PlayerBarFragment"
+        android:label="fragment_player_bar"
+        tools:layout="@layout/fragment_player_bar" />
 </navigation>

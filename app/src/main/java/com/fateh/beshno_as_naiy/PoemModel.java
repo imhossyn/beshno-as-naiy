@@ -1,8 +1,14 @@
 package com.fateh.beshno_as_naiy;
 
-public class PoemModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+
+public class PoemModel implements Parcelable {
     private int db_id;
-    private int class_number;
+    private int level;
     private String poem_title;
 
     private String poem_txt;
@@ -11,17 +17,37 @@ public class PoemModel {
     public PoemModel() {
     }
 
-    public PoemModel(String title){
+    public PoemModel(String title) {
         this.poem_title = title;
     }
 
     public PoemModel(int db_id, int class_number, String title, String voice_url, String poem_txt) {
         this.db_id = db_id;
-        this.class_number = class_number;
+        this.level = class_number;
         this.poem_title = title;
         this.poem_txt = poem_txt;
         this.voice_url = voice_url;
     }
+
+    protected PoemModel(Parcel in) {
+        db_id = in.readInt();
+        level = in.readInt();
+        poem_title = in.readString();
+        poem_txt = in.readString();
+        voice_url = in.readString();
+    }
+
+    public static final Creator<PoemModel> CREATOR = new Creator<PoemModel>() {
+        @Override
+        public PoemModel createFromParcel(Parcel in) {
+            return new PoemModel(in);
+        }
+
+        @Override
+        public PoemModel[] newArray(int size) {
+            return new PoemModel[size];
+        }
+    };
 
     public String getPoem_txt() {
         return poem_txt;
@@ -35,8 +61,8 @@ public class PoemModel {
         this.poem_txt = poem_txt;
     }
 
-    public int getClass_number() {
-        return class_number;
+    public int getLevel() {
+        return level;
     }
 
     public String getPoem_title() {
@@ -51,8 +77,8 @@ public class PoemModel {
         this.db_id = db_id;
     }
 
-    public void setClass_number(int class_number) {
-        this.class_number = class_number;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public void setPoem_title(String poem_title) {
@@ -65,6 +91,20 @@ public class PoemModel {
 
     @Override
     public String toString() {
-        return "PoemModel{" + "db_id=" + db_id + ", class_number=" + class_number + ", poem_title='" + poem_title + '\'' + ", poem_txt='" + poem_txt + '\'' + ", voice_url='" + voice_url + '\'' + '}';
+        return "PoemModel{" + "db_id=" + db_id + ", class_number=" + level + ", poem_title='" + poem_title + '\'' + ", poem_txt='" + poem_txt + '\'' + ", voice_url='" + voice_url + '\'' + '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(db_id);
+        dest.writeInt(level);
+        dest.writeString(poem_title);
+        dest.writeString(poem_txt);
+        dest.writeString(voice_url);
     }
 }

@@ -5,9 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +17,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChooseClassNumberFragment extends Fragment {
 
-    RadioGroup class_number_RG;
+    MyDBHelper myDBHelper;
+    RadioGroup level_select_RG;
     RadioButton class_selected_RB;
     Button insert_btn;
     TextView title_txt;
@@ -39,24 +43,51 @@ public class ChooseClassNumberFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         title_txt = view.findViewById(R.id.TitleTxt);
-        class_number_RG = view.findViewById(R.id.ClassNumbers);
+        level_select_RG = view.findViewById(R.id.ClassNumbers);
         insert_btn = view.findViewById(R.id.enter_btn);
-
+        myDBHelper = new MyDBHelper(getContext());
+        myDBHelper.createDataBase();
 
         insert_btn.setOnClickListener(new View.OnClickListener() {
-            int class_selected = 0;
+            int level_selected_id = 0;
 
             @Override
             public void onClick(View v) {
-                class_selected = class_number_RG.getCheckedRadioButtonId();
-                if (class_selected == -1) {
+                level_selected_id = level_select_RG.getCheckedRadioButtonId();
+                if (level_selected_id == -1) {
                     Toast.makeText(getContext(), "لطفا یکی از گزینه ها را انتخاب کنید!", Toast.LENGTH_SHORT).show();
                 } else {
-                    class_selected_RB = view.findViewById(class_selected);
-//                    Toast.makeText(getContext(), class_selected_RB.getText(), Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(v).navigate(R.id.action_chooseClassNumberFragment_to_poemsViewList);
+                    class_selected_RB = view.findViewById(level_selected_id);
+                    Toast.makeText(getContext(), class_selected_RB.getText(), Toast.LENGTH_SHORT).show();
+                    List<PoemModel> tmpPoemList = getPoems((String) class_selected_RB.getText());
+//                    Bundle bundle = new Bundle();
+//                    bundle.putParcelableArrayList("poemsList", (ArrayList<PoemModel>) tmpPoemList);
+//                    Navigation.findNavController(v).navigate(R.id.action_chooseClassNumberFragment_to_poemsViewList, bundle);
                 }
             }
         });
+    }
+
+    private List<PoemModel> getPoems(String level) {
+        int tmpLevel = 0;
+        switch (level){
+            case "پایه هفتم":
+                tmpLevel = 7;
+                break;
+            case "پایه هشتم":
+                tmpLevel = 8;
+                break;
+            case "پایه نهم":
+                tmpLevel = 9;
+                break;
+        }
+        List<PoemModel> tmpPoemList = new ArrayList<>();
+        List<PoemModel> poemList = myDBHelper.getAllData();
+        for (PoemModel poem : poemList) {
+            if (poem.getLevel() == tmpLevel) {
+                tmpPoemList.add(poem);
+            }
+        }
+        return tmpPoemList;
     }
 }
