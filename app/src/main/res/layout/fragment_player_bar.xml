@@ -43,32 +43,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:text="example title"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="40dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:weightSum="5">-->
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="40dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:weightSum="5">-->
 
-<!--            <SeekBar-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="4"-->
-<!--                android:progressTint="#fff"-->
-<!--                android:thumbTint="#c4ff0e" />-->
+        <!--            <SeekBar-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_weight="4"-->
+        <!--                android:progressTint="#fff"-->
+        <!--                android:thumbTint="#c4ff0e" />-->
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:gravity="center"-->
-<!--                android:text="- 2.33"-->
-<!--                android:textSize="14sp" />-->
-<!--        </LinearLayout>-->
+        <!--            <TextView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:gravity="center"-->
+        <!--                android:text="- 2.33"-->
+        <!--                android:textSize="14sp" />-->
+        <!--        </LinearLayout>-->
 
         <!--        <LinearLayout-->
         <!--            android:layout_width="match_parent"-->
