@@ -136,7 +136,7 @@ public class PlayerBarFragment extends DialogFragment {
         Log.d("play", "start");
         mediaPlayer = new MediaPlayer();
         try {
-            String url = poemModel.getVoice_url().replace("http://ir31.intranet", "https://ir31");
+            String url = "https://s15.uupload.ir/files/horahimi/" + poemModel.getDb_id() + ".mp3";
             mediaPlayer.setDataSource(url);
             mediaPlayer.prepare();
             mediaPlayer.start();
