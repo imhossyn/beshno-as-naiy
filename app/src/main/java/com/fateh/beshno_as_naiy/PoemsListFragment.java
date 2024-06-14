@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class PoemsListFragment extends Fragment {
 
-    private static final String TAG = "poemlist";
+    private static final String TAG = "poemsList";
     ListView poemListView;
     ListViewAdapter listViewAdapter;
     ArrayList<PoemModel> poemsList;
@@ -27,6 +27,7 @@ public class PoemsListFragment extends Fragment {
 
         Log.d(TAG, "start onCreate list of poems");
 
+        StartMediaPlayer.stopMedia();
         Bundle bundle = getArguments();
         poemsList = (ArrayList<PoemModel>) bundle.getSerializable("poemsList");
     }

@@ -56,6 +56,16 @@ public class PoemModel implements Serializable {
         return voice_url;
     }
 
+    public String getPoem_header(){
+        String[] title_split = this.poem_title.split("\\(");
+        return title_split[0];
+    }
+
+    public String getPoem_subject(){
+        String[] title_split = this.poem_title.split("\\(");
+        return "(" + title_split[1];
+    }
+
     public void setDb_id(int db_id) {
         this.db_id = db_id;
     }

@@ -51,7 +51,7 @@
                 android:text="پایه هفتم"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/black"
-                app:buttonTint="@color/green_tire" />
+                app:buttonTint="@color/main" />
 
             <RadioButton
                 android:id="@+id/level_8"
@@ -61,7 +61,7 @@
                 android:text="پایه هشتم"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/black"
-                app:buttonTint="@color/green_tire" />
+                app:buttonTint="@color/main" />
 
             <RadioButton
                 android:id="@+id/level_9"
@@ -71,7 +71,7 @@
                 android:text="پایه نهم"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/black"
-                app:buttonTint="@color/green_tire" />
+                app:buttonTint="@color/main" />
         </RadioGroup>
 
         <Button
@@ -79,7 +79,7 @@
             android:layout_width="85dp"
             android:layout_height="55dp"
             android:layout_marginTop="40dp"
-            android:backgroundTint="@color/green_tire"
+            android:backgroundTint="@color/buttons"
             android:text="@string/enter" />
     </LinearLayout>
 

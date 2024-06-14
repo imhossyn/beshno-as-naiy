@@ -13,32 +13,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
-    MediaPlayer mp;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
-        mp = MediaPlayer.create(SplashActivity.this, R.raw.start_music);
-        mp.start();
 
-        ConnectivityManager connectivityManager = (ConnectivityManager) SplashActivity.this.getSystemService(SplashActivity.this.CONNECTIVITY_SERVICE);
+        StartMediaPlayer.startPlaying(SplashActivity.this);
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) SplashActivity.this.getSystemService(CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
             NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
-
-            } else
-                Toast.makeText(SplashActivity.this, "اتصال اینترنت خود را بررسی کنید.", Toast.LENGTH_LONG).show();
+            if (!(networkInfo != null && networkInfo.isConnectedOrConnecting()))
+                Toast.makeText(SplashActivity.this, R.string.check_network_warning, Toast.LENGTH_LONG).show();
         }
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(i);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent i = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
         }, 5000);
     }
+
 }

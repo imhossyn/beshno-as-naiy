@@ -42,8 +42,10 @@ public class ListViewAdapter extends ArrayAdapter<PoemModel> {
         PoemModel currentPoem = getItem(position);
 
         // then according to the position of the view assign the desired TextView 1 for the same
-        TextView title = currentItemView.findViewById(R.id.poem_title);
-        title.setText(currentPoem.getPoem_title());
+        TextView header = currentItemView.findViewById(R.id.poem_header);
+        TextView subject = currentItemView.findViewById(R.id.poem_subject);
+        header.setText(currentPoem.getPoem_header());
+        subject.setText(currentPoem.getPoem_subject());
 
         ImageButton play_button = currentItemView.findViewById(R.id.listenButton);
         play_button.setOnClickListener(new View.OnClickListener() {

@@ -2,9 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="green">#D5EED9</color>
-    <color name="player_color">#4CAF50</color>
-    <color name="green_tire">#F00C662A</color>
-    <color name="green_roshan">#F0219548</color>
-    <color name="black_low">#A6272727</color>
+    <color name="back">#b2d9c4</color>
+    <color name="main">#44916f</color>
+    <color name="color1">#b2d9c4</color>
+    <color name="color2">#cbdfbc</color>
+    <color name="buttons">#c29470</color>
 </resources>

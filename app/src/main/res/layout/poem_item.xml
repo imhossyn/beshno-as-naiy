@@ -3,35 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/green"
-    android:layoutDirection="rtl"
+    android:background="@color/back"
     android:orientation="vertical"
-    android:padding="10dp">
-
-    <TextView
-        android:id="@+id/poem_title"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="5dp"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:layoutDirection="rtl"
-        android:maxLines="1"
-        android:text="بشنو از نی چون حکایت میکند. بشنو از نی چون حکایت میکند."
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:padding="5dp">
 
     <ImageButton
         android:id="@+id/listenButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/green_roshan"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:layout_marginRight="8dp"
+        android:backgroundTint="@color/buttons"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/poem_header"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:layoutDirection="rtl"
+            android:maxLines="1"
+            android:text="فصل هفتم پایه دهم"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/poem_subject"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:layoutDirection="rtl"
+            android:maxLines="1"
+            android:text="بشنو از نی چون حکایت میکند. بشنو از نی چون حکایت میکند."
+            android:textColor="@color/black"
+            android:textSize="11sp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

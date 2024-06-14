@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Beshnoasnaiy" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green_tire</item>
-        <item name="colorPrimaryVariant">@color/green_tire</item>
+        <item name="colorPrimary">@color/main</item>
+        <item name="colorPrimaryVariant">@color/main</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green</item>
-        <item name="colorSecondaryVariant">@color/green_tire</item>
+        <item name="colorSecondary">@color/back</item>
+        <item name="colorSecondaryVariant">@color/main</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>

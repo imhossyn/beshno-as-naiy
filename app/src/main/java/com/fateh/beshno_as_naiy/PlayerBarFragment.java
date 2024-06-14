@@ -53,10 +53,15 @@ public class PlayerBarFragment extends DialogFragment {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) mediaPlayer.release();
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mediaPlayer != null)
-            mediaPlayer.release();
+
     }
 
     @Override
@@ -66,16 +71,28 @@ public class PlayerBarFragment extends DialogFragment {
         play_button = view.findViewById(R.id.play_button);
 
         title_voice.setText(poemModel.getPoem_title());
+
+
         play_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "آمادگی برای پخش شدن ...", Toast.LENGTH_LONG).show();
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        playMusic();
-                    }
-                }).start();
+                if (mediaPlayer == null) {
+                    Toast.makeText(getContext(), "آمادگی برای پخش شدن ...", Toast.LENGTH_LONG).show();
+                    mediaPlayer = new MediaPlayer();
+                    generateMusic();
+                    new Thread(() -> mediaPlayer.start()).start();
+                }
+                else if (mediaPlayer.isPlaying()) {
+                    Toast.makeText(getContext(), "توقف", Toast.LENGTH_SHORT).show();
+                    mediaPlayer.pause();
+                } else if (mediaPlayer.getCurrentPosition() == 0) {
+                    Toast.makeText(getContext(), "پخش مجدد ...", Toast.LENGTH_LONG).show();
+                    new Thread(() -> mediaPlayer.start()).start();
+                } else {
+                    Toast.makeText(getContext(), "ادامه", Toast.LENGTH_SHORT).show();
+                    new Thread(() -> mediaPlayer.start()).start();
+                }
+
 //                File musicFile = new File(mContext.getApplicationInfo().dataDir + "/files/Music/", poemModel.getDb_id() + ".mp3");
 //                if (musicFile.exists()) {
 //                    // The file exists, play it
@@ -132,24 +149,19 @@ public class PlayerBarFragment extends DialogFragment {
 //        });
 //    }
 
-    public void playMusic() {
+    public void generateMusic() {
         Log.d("play", "start");
-        mediaPlayer = new MediaPlayer();
+
         try {
             String url = "https://s15.uupload.ir/files/horahimi/" + poemModel.getDb_id() + ".mp3";
             Log.d("music url", url);
             mediaPlayer.setDataSource(url);
             mediaPlayer.prepare();
-            mediaPlayer.start();
+            // Handle music playback completion
+            mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+//            mediaPlayer.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        mediaPlayer.setOnCompletionListener(mp -> {
-            // Handle music playback completion
-            mp.release();
-        });
     }
-
-
 }
